@@ -26,6 +26,8 @@ public class Main {
     private List<Cube> cubes = new ArrayList<Cube>();
     private Cube currentCube;
 
+    private boolean rotating = false;
+
     public void run() {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 
@@ -70,6 +72,7 @@ public class Main {
                     case GLFW_KEY_RIGHT -> currentCube.x += 0.05f;
                     case GLFW_KEY_W -> currentCube.z += 0.05f;
                     case GLFW_KEY_S -> currentCube.z -= 0.05f;
+                    case GLFW_KEY_R -> rotating = !rotating;
 
                     case GLFW_KEY_ENTER -> {
                         cubes.add(currentCube);
@@ -138,9 +141,11 @@ public class Main {
             }
 
             drawCube(currentCube);
+            currentCube.angle += 0.5f;
 
-
-
+            if (rotating){
+                currentCube.angle += 0.5f;
+            }
 
             glfwSwapBuffers(window); // swap the color buffers
 
@@ -201,9 +206,8 @@ public class Main {
         glVertex3f(-0.5f,0.5f, 0.5f);
         glVertex3f(-0.5f,0.5f, -0.5f);
         glEnd();
-
-        cube.angle += 0.5f;
     }
+
     public static void main(String[] args) {
         new Main().run();
     }
