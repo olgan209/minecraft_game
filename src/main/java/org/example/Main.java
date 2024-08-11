@@ -117,6 +117,41 @@ public class Main {
         glfwShowWindow(window);
     }
 
+    private void gradientDj(){
+        glMatrixMode(GL_PROJECTION);
+        glPushMatrix();
+        glLoadIdentity();
+        glOrtho(0, 800, 0, 600, -1, 1);
+
+        glMatrixMode(GL_MODELVIEW);
+        glPushMatrix();
+        glLoadIdentity();
+
+        glEnable(GL_DEPTH_TEST);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+        glDepthMask(false);
+
+        glBegin(GL_QUADS);
+
+        glColor3f(0.0f, 0.3f, 0.7f);
+        glVertex2f(0, 0);
+        glVertex2f(800, 0);
+
+        glColor3f(0.0f, 0.7f, 1.0f);
+        glVertex2f(800, 600);
+        glVertex2f(0, 600);
+
+        glEnd();
+
+        glDepthMask(true);
+        glDisable(GL_BLEND);
+        glPopMatrix();
+        glMatrixMode(GL_PROJECTION);
+        glPopMatrix();
+        glMatrixMode(GL_MODELVIEW);
+    }
+
     private void loop() {
         GL.createCapabilities();
 
@@ -135,6 +170,8 @@ public class Main {
 
             glMatrixMode(GL_PROJECTION);
             glLoadMatrixf(fb);
+
+            gradientDj();
 
             for (Cube cube : cubes) {
                 drawCube(cube);
