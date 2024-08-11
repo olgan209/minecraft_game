@@ -87,7 +87,13 @@ public class Main {
 
         currentCube = new Cube(0, 0, -5, 0);
 
-
+        for (int row = 0; row < 6; row++) {
+            float z = -4.1f - row * 0.3f;
+            for (int i = 0; i < 25; i++) {
+                float x = -3.4f + i * 0.3f ;
+                cubes.add(new Cube(x, -1.7f, z, 0));
+            }
+        }
 
         // Get the thread stack and push a new frame
         try ( MemoryStack stack = stackPush() ) {
@@ -202,42 +208,42 @@ public class Main {
 
         glBegin(GL_QUADS);
         //front
-        glColor3f(1.0f, 0.0f, 0.0f);
+        glColor3f(125/255f, 218/255f, 88/255f);
         glVertex3f(-0.5f,-0.5f, 0.5f);
         glVertex3f(0.5f,-0.5f, 0.5f);
         glVertex3f(0.5f,0.5f, 0.5f);
         glVertex3f(-0.5f,0.5f, 0.5f);
 
         //back
-        glColor3f(0.0f, 1.0f, 0.0f);
+        glColor3f(125/255f, 218/255f, 88/255f);
         glVertex3f(-0.5f,-0.5f, -0.5f);
         glVertex3f(-0.5f,0.5f, -0.5f);
         glVertex3f(0.5f,0.5f, -0.5f);
         glVertex3f(0.5f,-0.5f, -0.5f);
 
         //top face
-        glColor3f(0.0f, 0.0f, 1.0f);
+        glColor3f(92/255f, 173/255f, 60/255f);
         glVertex3f(-0.05f,0.05f, -0.05f);
         glVertex3f(-0.05f,0.05f, 0.05f);
         glVertex3f(0.05f,0.05f, 0.05f);
         glVertex3f(0.05f,0.05f, -0.05f);
 
         //bottom face
-        glColor3f(1.0f, 1.0f, 0.0f);
+        glColor3f(92/255f, 173/255f, 60/255f);
         glVertex3f(-0.5f,-0.5f, -0.5f);
         glVertex3f(0.5f,-0.5f, -0.5f);
         glVertex3f(0.5f,-0.5f, 0.5f);
         glVertex3f(-0.5f,-0.5f, 0.5f);
 
         //right face
-        glColor3f(1.0f, 0.0f, 1.0f);
+        glColor3f(142/255f, 235/255f, 105/255f);
         glVertex3f(0.5f,-0.5f, -0.5f);
         glVertex3f(0.5f,0.5f, -0.5f);
         glVertex3f(0.5f,0.5f, 0.5f);
         glVertex3f(0.5f,-0.5f, 0.5f);
 
         //left face
-        glColor3f(0.0f, 1.0f, 1.0f);
+        glColor3f(142/255f, 235/255f, 105/255f);
         glVertex3f(-0.5f,-0.5f, -0.5f);
         glVertex3f(-0.5f,-0.5f, 0.5f);
         glVertex3f(-0.5f,0.5f, 0.5f);
